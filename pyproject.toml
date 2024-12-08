@@ -1,0 +1,91 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["anuar.shakirov <anuar.shakirov@aramcoinnovations.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.1.3"
+pandas = "^2.2.3"
+matplotlib = "^3.9.3"
+pytorch-lightning = "^2.4.0"
+pathlib = "^1.0.1"
+openpyxl = "^3.1.5"
+scikit-learn = "^1.5.2"
+torch = "^2.5.1"
+tqdm = "^4.67.1"
+logger = "^1.4"
+loguru = "^0.7.3"
+black = "^24.10.0"
+ruff = "^0.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+exclude = '''
+(
+  /(
+    | \.git
+    | \.mypy_cache
+    | \.venv
+  )/
+)
+'''
+include = '\.pyi?$'
+skip-string-normalization = true
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+select = ["ALL"]
+ignore = [
+  "D105",
+  "D107",
+  "D203",
+  "D205",
+  "D213",
+  "D401",
+  "D406",
+  "D407",
+  "D413",
+  "FBT",
+  "FIX002",
+  "FIX004",
+  "G004",
+  "PD002",
+  "PD011",
+  "PD901",
+  "RUF001",
+  "RUF002",
+  "RUF003",
+  "TRY003",
+]
+target-version = "py311"
+exclude = [".venv"]
+
+[tool.ruff.pep8-naming]
+ignore-names = ["X*", "df"]
+
+[tool.ruff.isort]
+lines-after-imports = 2
+no-lines-before = ["standard-library", "local-folder"]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+  "pyspark",
+] # чтобы импорты pyspark шли отдельно в самом конце (чтобы точно сначала бы insert до арихивов с pyspark)
+known-local-folder = ["source_check"]
+known-third-party = [
+  # сюда нужно будет добавлять сторонние библиотеки, с которыми не справился isort
+]
+
+[tool.ruff.isort.sections]
+"pyspark" = ["pyspark"]
