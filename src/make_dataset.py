@@ -85,8 +85,8 @@ class DataPrepare:
                 slice_data_torch: torch.Tensor = torch.as_tensor(slice_data[LOGS].values, dtype=torch.float32)
                 slice_data_masked_torch: torch.Tensor = torch.as_tensor(slice_data_masked[LOGS].values, dtype=torch.float32)
                 # добавляем данные в словарь
-                self.dict_processed_data["input"].append(slice_data_torch)
-                self.dict_processed_data["output"].append(slice_data_masked_torch)
+                self.dict_processed_data["input"].append(slice_data_masked_torch)
+                self.dict_processed_data["output"].append(slice_data_torch)
                 self.dict_processed_data["sample_index"].append(cur_slice_index)
                 cur_slice_index += 1
                 # заполняем статистику
