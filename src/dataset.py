@@ -39,6 +39,6 @@ class DatasetTaskAgnostic(Dataset):
 if __name__ == "__main__":
     path_to_datastat = PATH_TO_DATA / "stat_table.csv"
     data_stat = pd.read_csv(path_to_datastat)
-    dataset = DatasetTaskAgnostic(data_stat)
+    dataset = DatasetTaskAgnostic(data_stat=data_stat)
     # get item
     print(next(iter(dataset))[0])
